@@ -27,7 +27,7 @@ export default function Reviews() {
           </div>
 
           {/* Rating Summary Box */}
-          <div style={{
+          <div className="reviews-header-summary" style={{
             display: 'flex',
             alignItems: 'center',
             gap: '1.25rem',
@@ -160,7 +160,10 @@ export default function Reviews() {
 
       <style>{`
         @media (max-width: 900px) {
-          .reviews-grid { grid-template-columns: 1fr !important; }
+          .reviews-grid { grid-template-columns: 1fr !important; gap: 1.25rem !important; }
+        }
+        @media (max-width: 576px) {
+          .reviews-header-summary { width: 100% !important; justify-content: flex-start !important; }
         }
       `}</style>
     </section>

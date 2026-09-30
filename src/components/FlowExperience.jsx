@@ -145,10 +145,11 @@ export default function FlowExperience({ onOpenBooking }) {
 
       <style>{`
         @media (max-width: 1024px) {
-          .experience-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .experience-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 1.5rem !important; }
         }
         @media (max-width: 640px) {
-          .experience-grid { grid-template-columns: 1fr !important; }
+          .experience-grid { grid-template-columns: 1fr !important; gap: 1.25rem !important; }
+          .experience-grid .rounded-img-frame { height: 180px !important; }
         }
       `}</style>
     </section>

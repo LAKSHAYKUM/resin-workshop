@@ -14,6 +14,18 @@ export default function Navbar({ onOpenBooking, onOpenImageManager }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Prevent background scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
+
   const navLinks = [
     { name: 'Home', href: '#hero' },
     { name: 'Experience', href: '#experience' },
@@ -29,34 +41,35 @@ export default function Navbar({ onOpenBooking, onOpenImageManager }) {
       <div style={{
         backgroundColor: '#121110',
         color: '#D6C5B3',
-        fontSize: '0.75rem',
-        letterSpacing: '0.08em',
-        padding: '0.5rem 0',
+        fontSize: '0.725rem',
+        letterSpacing: '0.06em',
+        padding: '0.45rem 0',
         borderBottom: '1px solid rgba(247, 244, 239, 0.08)'
       }}>
         <div className="container-custom" style={{
           display: 'flex',
-          justify: 'space-between',
+          justifyContent: 'space-between',
           alignItems: 'center',
           flexWrap: 'wrap',
-          gap: '0.5rem'
+          gap: '0.35rem 1rem'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
             <span style={{
               display: 'inline-block',
               width: '6px',
               height: '6px',
               borderRadius: '50%',
-              backgroundColor: '#C5A87C'
+              backgroundColor: '#C5A87C',
+              flexShrink: 0
             }}></span>
-            <span>Mashrabia Building, Mankhool • Dubai, UAE</span>
+            <span>Mankhool • Dubai, UAE</span>
           </div>
           
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#E8D2B4' }}>
               <Star size={12} fill="#C5A87C" color="#C5A87C" />
               <span style={{ fontWeight: 600 }}>{studioInfo.rating}</span>
-              <span style={{ color: '#9E968B' }}>({studioInfo.reviewCount} Google Reviews)</span>
+              <span className="hide-mobile-meta" style={{ color: '#9E968B' }}>({studioInfo.reviewCount} Reviews)</span>
             </div>
             
             <a 
@@ -77,33 +90,34 @@ export default function Navbar({ onOpenBooking, onOpenImageManager }) {
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        backgroundColor: scrolled ? 'rgba(250, 243, 240, 0.96)' : 'rgba(250, 243, 240, 0.92)',
+        backgroundColor: scrolled ? 'rgba(250, 243, 240, 0.96)' : 'rgba(250, 243, 240, 0.94)',
         backdropFilter: 'blur(12px)',
         borderBottom: scrolled ? '1px solid var(--border-subtle)' : '1px solid transparent',
         transition: 'all 0.3s ease',
-        padding: scrolled ? '0.85rem 0' : '1.25rem 0'
+        padding: scrolled ? '0.75rem 0' : '1rem 0'
       }}>
         <div className="container-custom" style={{
           display: 'flex',
           alignItems: 'center',
-          justify: 'space-between'
+          justify: 'space-between',
+          gap: '0.75rem'
         }}>
           {/* Logo */}
           <a href="#hero" style={{ textDecoration: 'none', color: 'var(--text-main)' }}>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{
+              <span className="navbar-logo-title" style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: '1.6rem',
+                fontSize: '1.45rem',
                 fontWeight: 600,
-                letterSpacing: '0.08em',
+                letterSpacing: '0.06em',
                 lineHeight: 1
               }}>
                 FLOW STUDIO
               </span>
               <span style={{
                 fontFamily: 'var(--font-sans)',
-                fontSize: '0.625rem',
-                letterSpacing: '0.3em',
+                fontSize: '0.575rem',
+                letterSpacing: '0.28em',
                 color: 'var(--accent-gold-dark)',
                 textTransform: 'uppercase',
                 marginTop: '0.2rem',
@@ -141,14 +155,20 @@ export default function Navbar({ onOpenBooking, onOpenImageManager }) {
           </nav>
 
           {/* Right Action Buttons */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            {/* Primary CTA */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+            {/* Primary Header CTA */}
             <button
               onClick={() => onOpenBooking()}
-              className="btn-primary"
-              style={{ padding: '0.75rem 1.4rem', fontSize: '0.75rem' }}
+              className="btn-primary header-cta-btn"
+              style={{
+                padding: '0.65rem 1.15rem',
+                fontSize: '0.725rem',
+                minHeight: '40px',
+                borderRadius: '4px'
+              }}
             >
-              Book a Workshop
+              <span className="cta-full-text">Book a Workshop</span>
+              <span className="cta-short-text">Book Now</span>
             </button>
 
             {/* Mobile Menu Toggle */}
@@ -158,14 +178,19 @@ export default function Navbar({ onOpenBooking, onOpenImageManager }) {
               style={{
                 display: 'none',
                 background: 'none',
-                border: 'none',
+                border: '1px solid var(--border-subtle)',
+                borderRadius: '4px',
                 cursor: 'pointer',
                 color: 'var(--text-main)',
-                padding: '0.25rem'
+                padding: '0.5rem',
+                minWidth: '44px',
+                minHeight: '44px',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
@@ -173,16 +198,20 @@ export default function Navbar({ onOpenBooking, onOpenImageManager }) {
         {/* Mobile Dropdown Drawer */}
         {mobileMenuOpen && (
           <div style={{
-            position: 'absolute',
-            top: '100%',
+            position: 'fixed',
+            top: 'calc(100% - 1px)',
             left: 0,
             width: '100%',
-            backgroundColor: '#FAF8F5',
+            height: 'calc(100vh - 100%)',
+            backgroundColor: 'rgba(250, 243, 240, 0.98)',
+            backdropFilter: 'blur(16px)',
             borderBottom: '1px solid var(--border-subtle)',
-            padding: '1.5rem 0',
-            boxShadow: '0 20px 30px rgba(0,0,0,0.08)'
+            padding: '1.75rem 0 3rem 0',
+            boxShadow: '0 25px 40px rgba(0,0,0,0.12)',
+            overflowY: 'auto',
+            zIndex: 99
           }}>
-            <div className="container-custom" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div className="container-custom" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -191,35 +220,41 @@ export default function Navbar({ onOpenBooking, onOpenImageManager }) {
                   style={{
                     textDecoration: 'none',
                     color: 'var(--text-main)',
-                    fontSize: '1.1rem',
+                    fontSize: '1.25rem',
                     fontFamily: 'var(--font-serif)',
                     fontWeight: 500,
-                    letterSpacing: '0.04em',
+                    letterSpacing: '0.03em',
                     borderBottom: '1px solid var(--border-subtle)',
-                    paddingBottom: '0.5rem'
+                    padding: '0.9rem 0',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justify: 'space-between',
+                    minHeight: '48px'
                   }}
                 >
-                  {link.name}
+                  <span>{link.name}</span>
+                  <span style={{ fontSize: '0.85rem', color: 'var(--accent-clay)' }}>→</span>
                 </a>
               ))}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '0.5rem' }}>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', marginTop: '1.5rem' }}>
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);
                     onOpenBooking();
                   }}
                   className="btn-primary"
-                  style={{ width: '100%' }}
+                  style={{ width: '100%', minHeight: '50px', fontSize: '0.85rem' }}
                 >
                   Book a Workshop
                 </button>
 
                 <a
-                  href={locationDetails?.whatsappUrl || `https://wa.me/${studioInfo.whatsappNumber}`}
+                  href={`https://wa.me/${studioInfo.whatsappNumber}`}
                   target="_blank"
                   rel="noreferrer"
                   className="btn-whatsapp"
-                  style={{ textAlign: 'center', justifyContent: 'center' }}
+                  style={{ width: '100%', textAlign: 'center', justifyContent: 'center', minHeight: '50px', fontSize: '0.85rem' }}
                 >
                   WhatsApp Us
                 </a>
@@ -230,10 +265,16 @@ export default function Navbar({ onOpenBooking, onOpenImageManager }) {
       </header>
 
       <style>{`
+        .cta-short-text { display: none; }
         @media (max-width: 900px) {
           .desktop-nav { display: none !important; }
-          .mobile-toggle { display: block !important; }
-          .hide-mobile { display: none !important; }
+          .mobile-toggle { display: inline-flex !important; }
+        }
+        @media (max-width: 520px) {
+          .navbar-logo-title { font-size: 1.25rem !important; }
+          .cta-full-text { display: none !important; }
+          .cta-short-text { display: inline !important; }
+          .hide-mobile-meta { display: none !important; }
         }
       `}</style>
     </>

@@ -40,15 +40,15 @@ export default function Gallery({ galleryItems, onOpenLightbox, onOpenImageManag
         </div>
 
         {/* Filter Tabs */}
-        <div style={{
+        <div className="gallery-tabs-row" style={{
           display: 'flex',
           justify: 'center',
           alignItems: 'center',
           flexWrap: 'wrap',
-          gap: '0.75rem',
-          marginBottom: '2.5rem',
+          gap: '0.6rem',
+          marginBottom: '2rem',
           borderBottom: '1px solid var(--border-subtle)',
-          paddingBottom: '1.25rem'
+          paddingBottom: '1rem'
         }}>
           {categories.map((cat) => (
             <button
@@ -58,14 +58,15 @@ export default function Gallery({ galleryItems, onOpenLightbox, onOpenImageManag
                 background: activeTab === cat ? 'var(--text-main)' : 'var(--bg-primary)',
                 color: activeTab === cat ? '#FFFFFF' : 'var(--text-main)',
                 border: activeTab === cat ? '1px solid var(--text-main)' : '1px solid var(--border-subtle)',
-                padding: '0.55rem 1.35rem',
+                padding: '0.6rem 1.2rem',
                 fontSize: '0.8125rem',
                 fontFamily: 'var(--font-sans)',
                 fontWeight: 600,
-                letterSpacing: '0.05em',
+                letterSpacing: '0.04em',
                 cursor: 'pointer',
                 borderRadius: '20px',
-                transition: 'all 0.3s ease'
+                transition: 'all 0.3s ease',
+                minHeight: '44px'
               }}
             >
               {cat}
@@ -77,7 +78,7 @@ export default function Gallery({ galleryItems, onOpenLightbox, onOpenImageManag
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(12, 1fr)',
-          gap: '1.75rem'
+          gap: '1.5rem'
         }} className="gallery-masonry">
           {filteredItems.map((item, index) => {
             // Determine span based on item aspect ratio or index
@@ -96,7 +97,7 @@ export default function Gallery({ galleryItems, onOpenLightbox, onOpenImageManag
                   overflow: 'hidden',
                   boxShadow: 'var(--shadow-subtle)',
                   border: '1px solid var(--border-subtle)',
-                  minHeight: '340px'
+                  minHeight: '320px'
                 }}
                 className="gallery-item-card tilt-card"
               >
@@ -105,10 +106,10 @@ export default function Gallery({ galleryItems, onOpenLightbox, onOpenImageManag
                     src={item.src}
                     alt={item.title}
                     className="img-editorial"
-                    style={{ width: '100%', height: '100%', minHeight: '340px', objectFit: 'cover' }}
+                    style={{ width: '100%', height: '100%', minHeight: '320px', objectFit: 'cover' }}
                   />
 
-                  {/* Overlay Gradient on Hover */}
+                  {/* Overlay Gradient */}
                   <div className="gallery-overlay" style={{
                     position: 'absolute',
                     inset: 0,
@@ -116,7 +117,7 @@ export default function Gallery({ galleryItems, onOpenLightbox, onOpenImageManag
                     display: 'flex',
                     flexDirection: 'column',
                     justify: 'flex-end',
-                    padding: '1.75rem',
+                    padding: '1.35rem',
                     color: '#F7F4EF',
                     opacity: 0,
                     transition: 'opacity 0.4s var(--ease-out-smooth)'
@@ -134,34 +135,35 @@ export default function Gallery({ galleryItems, onOpenLightbox, onOpenImageManag
                         </span>
                         <h4 style={{
                           fontFamily: 'var(--font-serif)',
-                          fontSize: '1.4rem',
+                          fontSize: '1.3rem',
                           fontWeight: 500,
                           lineHeight: 1.2,
-                          marginTop: '0.25rem'
+                          marginTop: '0.2rem'
                         }}>
                           {item.title}
                         </h4>
                         <p style={{
-                          fontSize: '0.8rem',
+                          fontSize: '0.785rem',
                           color: 'var(--text-muted-dark)',
-                          marginTop: '0.25rem'
+                          marginTop: '0.2rem'
                         }}>
                           {item.subtitle}
                         </p>
                       </div>
 
                       <div style={{
-                        width: '38px',
-                        height: '38px',
+                        width: '36px',
+                        height: '36px',
                         borderRadius: '50%',
-                        backgroundColor: 'rgba(255,255,255,0.15)',
+                        backgroundColor: 'rgba(255,255,255,0.2)',
                         backdropFilter: 'blur(6px)',
                         display: 'flex',
                         alignItems: 'center',
                         justify: 'center',
-                        color: '#FFFFFF'
+                        color: '#FFFFFF',
+                        flexShrink: 0
                       }}>
-                        <Maximize2 size={16} />
+                        <Maximize2 size={15} />
                       </div>
                     </div>
                   </div>
@@ -178,6 +180,7 @@ export default function Gallery({ galleryItems, onOpenLightbox, onOpenImageManag
         }
         @media (max-width: 900px) {
           .gallery-masonry > div { grid-column: span 12 !important; min-height: 280px !important; }
+          .gallery-overlay { opacity: 1 !important; background: linear-gradient(to top, rgba(18, 17, 16, 0.82), transparent 75%) !important; }
         }
       `}</style>
     </section>

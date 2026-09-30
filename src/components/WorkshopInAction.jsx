@@ -221,9 +221,10 @@ export default function WorkshopInAction({ onOpenBooking, studioImage }) {
 
       <style>{`
         @media (max-width: 1024px) {
-          .action-text-col, .action-badge-col { grid-column: span 12 !important; textAlign: left !important; }
+          .action-text-col, .action-badge-col { grid-column: span 12 !important; text-align: left !important; }
+          .action-badge-col { margin-top: 1rem; }
           .action-visual-row > div { grid-column: span 12 !important; height: 240px !important; }
-          .action-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .action-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 1.25rem !important; }
         }
         @media (max-width: 640px) {
           .action-grid { grid-template-columns: 1fr !important; }

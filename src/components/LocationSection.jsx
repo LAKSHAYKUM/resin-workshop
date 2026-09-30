@@ -85,13 +85,13 @@ export default function LocationSection({ onOpenBooking }) {
             </div>
 
             {/* CTAs */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '2.5rem' }}>
+            <div className="location-cta-group" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '2rem' }}>
               <a
                 href={locationDetails.googleMapsUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="btn-primary"
-                style={{ padding: '0.85rem 1.75rem' }}
+                className="btn-primary location-btn"
+                style={{ padding: '0.85rem 1.75rem', minHeight: '48px' }}
               >
                 <span>Get Directions</span>
                 <Navigation size={14} />
@@ -101,8 +101,8 @@ export default function LocationSection({ onOpenBooking }) {
                 href={locationDetails.whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="btn-whatsapp"
-                style={{ padding: '0.85rem 1.75rem' }}
+                className="btn-whatsapp location-btn"
+                style={{ padding: '0.85rem 1.75rem', minHeight: '48px' }}
               >
                 <MessageSquare size={16} />
                 <span>WhatsApp Us</span>
@@ -115,13 +115,13 @@ export default function LocationSection({ onOpenBooking }) {
             <div style={{
               position: 'relative',
               backgroundColor: '#1C1A18',
-              borderRadius: '4px',
-              padding: '2.5rem',
+              borderRadius: '8px',
+              padding: '2rem 1.5rem',
               color: '#F7F4EF',
               overflow: 'hidden',
               boxShadow: 'var(--shadow-elevated)',
               border: '1px solid var(--border-dark)',
-              minHeight: '420px',
+              minHeight: '380px',
               display: 'flex',
               flexDirection: 'column',
               justify: 'space-between'
@@ -137,23 +137,23 @@ export default function LocationSection({ onOpenBooking }) {
               }}></div>
 
               {/* Map Header Overlay */}
-              <div style={{ position: 'relative', zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Compass size={18} color="#C5A87C" />
-                  <span style={{ fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#C5A87C', fontWeight: 600 }}>
-                    Dubai Creative Hub • Mankhool
+              <div style={{ position: 'relative', zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                  <Compass size={16} color="#C5A87C" />
+                  <span style={{ fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#C5A87C', fontWeight: 600 }}>
+                    Mankhool • Dubai
                   </span>
                 </div>
 
                 <div style={{
                   backgroundColor: 'rgba(37, 211, 102, 0.15)',
                   color: '#25D366',
-                  padding: '0.3rem 0.75rem',
+                  padding: '0.25rem 0.65rem',
                   borderRadius: '20px',
-                  fontSize: '0.725rem',
+                  fontSize: '0.7rem',
                   fontWeight: 600
                 }}>
-                  Open for Sessions
+                  Open Sessions
                 </div>
               </div>
 
@@ -161,42 +161,43 @@ export default function LocationSection({ onOpenBooking }) {
               <div style={{
                 position: 'relative',
                 zIndex: 1,
-                margin: '2rem auto',
+                margin: '1.5rem auto',
                 textAlign: 'center',
-                backgroundColor: 'rgba(18, 17, 16, 0.85)',
+                backgroundColor: 'rgba(18, 17, 16, 0.88)',
                 backdropFilter: 'blur(10px)',
-                padding: '1.75rem 2.25rem',
-                borderRadius: '4px',
+                padding: '1.5rem 1.25rem',
+                borderRadius: '8px',
                 border: '1px solid rgba(197, 168, 124, 0.3)',
-                maxWidth: '420px'
+                width: '100%',
+                maxWidth: '400px'
               }}>
                 <div style={{
-                  width: '48px',
-                  height: '48px',
+                  width: '44px',
+                  height: '44px',
                   borderRadius: '50%',
                   backgroundColor: 'var(--accent-gold)',
                   color: '#121110',
                   display: 'flex',
                   alignItems: 'center',
                   justify: 'center',
-                  margin: '0 auto 1rem auto',
+                  margin: '0 auto 0.85rem auto',
                   boxShadow: '0 0 25px rgba(197, 168, 124, 0.5)'
                 }}>
-                  <MapPin size={26} />
+                  <MapPin size={24} />
                 </div>
 
-                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', color: '#FFFFFF', fontWeight: 500 }}>
+                <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', color: '#FFFFFF', fontWeight: 500 }}>
                   Flow Studio By Suruchi
                 </h3>
-                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted-dark)', marginTop: '0.35rem' }}>
+                <p style={{ fontSize: '0.825rem', color: 'var(--text-muted-dark)', marginTop: '0.35rem' }}>
                   Mashrabia Building, Suite 304, Mankhool, Dubai, UAE
                 </p>
 
-                <div style={{ marginTop: '1.25rem' }}>
+                <div style={{ marginTop: '1.15rem' }}>
                   <button
                     onClick={onOpenBooking}
                     className="btn-primary"
-                    style={{ width: '100%', fontSize: '0.75rem' }}
+                    style={{ width: '100%', fontSize: '0.75rem', minHeight: '44px' }}
                   >
                     Reserve Session
                   </button>
@@ -204,13 +205,13 @@ export default function LocationSection({ onOpenBooking }) {
               </div>
 
               {/* Map Footer Note */}
-              <div style={{ position: 'relative', zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.75rem', color: 'var(--text-muted-dark)' }}>
+              <div style={{ position: 'relative', zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.725rem', color: 'var(--text-muted-dark)', flexWrap: 'wrap', gap: '0.5rem' }}>
                 <span>Mankhool • Dubai, UAE</span>
                 <a
                   href={locationDetails.googleMapsUrl}
                   target="_blank"
                   rel="noreferrer"
-                  style={{ color: '#C5A87C', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.3rem' }}
+                  style={{ color: '#C5A87C', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.3rem', minHeight: '44px' }}
                 >
                   <span>Open in Google Maps</span>
                   <ExternalLink size={12} />
@@ -224,6 +225,11 @@ export default function LocationSection({ onOpenBooking }) {
       <style>{`
         @media (max-width: 992px) {
           .location-text-col, .location-map-col { grid-column: span 12 !important; }
+          .location-map-col { margin-top: 2rem; }
+        }
+        @media (max-width: 576px) {
+          .location-cta-group { flex-direction: column !important; }
+          .location-btn { width: 100% !important; justify-content: center !important; }
         }
       `}</style>
     </section>

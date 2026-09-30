@@ -125,7 +125,7 @@ ${notes ? `- Notes: ${notes}` : ''}`;
               </div>
 
               {/* Name & Phone */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div className="modal-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div>
                   <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-main)', marginBottom: '0.4rem' }}>
                     Your Name
@@ -170,7 +170,7 @@ ${notes ? `- Notes: ${notes}` : ''}`;
               </div>
 
               {/* Participants & Day */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+              <div className="modal-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                 <div>
                   <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-main)', marginBottom: '0.4rem' }}>
                     Group Size
@@ -243,7 +243,7 @@ ${notes ? `- Notes: ${notes}` : ''}`;
               <button
                 type="submit"
                 className="btn-primary"
-                style={{ width: '100%', marginTop: '0.5rem' }}
+                style={{ width: '100%', marginTop: '0.5rem', minHeight: '48px' }}
               >
                 <MessageSquare size={16} />
                 <span>Send WhatsApp Enquiry</span>
@@ -280,6 +280,12 @@ ${notes ? `- Notes: ${notes}` : ''}`;
           </div>
         )}
       </div>
+
+      <style>{`
+        @media (max-width: 500px) {
+          .modal-form-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </div>
   );
 }

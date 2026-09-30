@@ -207,17 +207,17 @@ export default function Workshops({ onOpenBooking, galleryImages }) {
                 </div>
 
                 {/* Card Bottom CTA */}
-                <div style={{
+                <div className="workshop-card-footer" style={{
                   display: 'flex',
                   alignItems: 'center',
                   justify: 'space-between',
-                  gap: '1rem',
+                  gap: '0.85rem',
                   paddingTop: '1.25rem',
                   borderTop: '1px solid var(--border-subtle)',
                   marginTop: '0.5rem'
                 }}>
                   <span style={{
-                    fontSize: '0.75rem',
+                    fontSize: '0.725rem',
                     color: 'var(--accent-clay)',
                     fontWeight: 700,
                     letterSpacing: '0.05em',
@@ -228,11 +228,12 @@ export default function Workshops({ onOpenBooking, galleryImages }) {
 
                   <button
                     onClick={() => onOpenBooking(item.title)}
-                    className="btn-primary"
+                    className="btn-primary workshop-book-btn"
                     style={{
                       padding: '0.75rem 1.35rem',
                       fontSize: '0.75rem',
-                      borderRadius: '4px'
+                      borderRadius: '4px',
+                      minHeight: '44px'
                     }}
                   >
                     <span>Book Workshop</span>
@@ -247,7 +248,11 @@ export default function Workshops({ onOpenBooking, galleryImages }) {
 
       <style>{`
         @media (max-width: 900px) {
-          .workshops-grid { grid-template-columns: 1fr !important; }
+          .workshops-grid { grid-template-columns: 1fr !important; gap: 1.75rem !important; }
+        }
+        @media (max-width: 576px) {
+          .workshop-card-footer { flex-direction: column !important; align-items: stretch !important; text-align: center !important; }
+          .workshop-book-btn { width: 100% !important; justify-content: center !important; }
         }
       `}</style>
     </section>

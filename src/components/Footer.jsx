@@ -185,6 +185,14 @@ export default function Footer() {
           </button>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          footer .container-custom > div:first-child > div {
+            grid-column: span 12 !important;
+          }
+        }
+      `}</style>
     </footer>
   );
 }

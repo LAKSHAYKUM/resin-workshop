@@ -49,8 +49,8 @@ export default function Hero({ onOpenBooking, heroImage }) {
               </div>
             </div>
 
-            <h1 className="heading-hero" style={{ marginBottom: '1.5rem', color: 'var(--text-main)' }}>
-              Create Something <br />
+            <h1 className="heading-hero" style={{ marginBottom: '1.25rem', color: 'var(--text-main)' }}>
+              Create Something <span className="hero-br"><br /></span>
               <span style={{
                 fontStyle: 'italic',
                 color: 'var(--accent-clay)',
@@ -61,19 +61,19 @@ export default function Hero({ onOpenBooking, heroImage }) {
             </h1>
 
             <p style={{
-              fontSize: 'clamp(1.05rem, 1.6vw, 1.35rem)',
+              fontSize: 'clamp(1rem, 1.5vw, 1.35rem)',
               color: 'var(--text-muted)',
               maxWidth: '540px',
               fontWeight: 400,
-              lineHeight: 1.5,
-              marginBottom: '2.25rem'
+              lineHeight: 1.55,
+              marginBottom: '2rem'
             }}>
               {studioInfo.heroSubtitle}
             </p>
 
             {/* CTAs & Social Proof Badge */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-              <div style={{
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              <div className="hero-cta-group" style={{
                 display: 'flex',
                 alignItems: 'center',
                 flexWrap: 'wrap',
@@ -81,7 +81,7 @@ export default function Hero({ onOpenBooking, heroImage }) {
               }}>
                 <button
                   onClick={onOpenBooking}
-                  className="btn-primary"
+                  className="btn-primary hero-btn-main"
                 >
                   <span>Book a Workshop</span>
                   <ArrowUpRight size={16} />
@@ -89,7 +89,7 @@ export default function Hero({ onOpenBooking, heroImage }) {
 
                 <a
                   href="#workshops"
-                  className="btn-secondary"
+                  className="btn-secondary hero-btn-sub"
                 >
                   Explore Workshops
                 </a>
@@ -99,13 +99,13 @@ export default function Hero({ onOpenBooking, heroImage }) {
               <div style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '1rem',
+                gap: '0.85rem',
                 padding: '0.75rem 1.25rem',
                 backgroundColor: 'var(--bg-surface)',
                 border: '1px solid var(--border-subtle)',
-                borderRadius: '4px',
+                borderRadius: '6px',
                 maxWidth: 'fit-content'
-              }}>
+              }} className="hero-review-badge">
                 <div style={{ display: 'flex', gap: '0.15rem' }}>
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} size={14} fill="#C5A87C" color="#C5A87C" />
@@ -113,7 +113,7 @@ export default function Hero({ onOpenBooking, heroImage }) {
                 </div>
                 <div style={{ fontSize: '0.8125rem', color: 'var(--text-main)' }}>
                   <strong style={{ fontWeight: 600 }}>4.9 Stars</strong> on Google Reviews
-                  <span style={{ color: 'var(--text-light)', marginLeft: '0.4rem' }}>(152 Reviews)</span>
+                  <span style={{ color: 'var(--text-light)', marginLeft: '0.35rem' }}>(152 Reviews)</span>
                 </div>
               </div>
             </div>
@@ -132,16 +132,16 @@ export default function Hero({ onOpenBooking, heroImage }) {
               borderRadius: '24px',
               pointerEvents: 'none',
               zIndex: 0
-            }} className="animate-pulse-subtle"></div>
+            }} className="animate-pulse-subtle hide-mobile-accent"></div>
 
             {/* Main Visual Frame */}
-            <div className="img-container rounded-img-frame tilt-card" style={{
+            <div className="img-container rounded-img-frame tilt-card hero-img-container" style={{
               position: 'relative',
               zIndex: 1,
               borderRadius: '20px',
               boxShadow: 'var(--shadow-elevated)',
               aspectRatio: '4/5',
-              maxHeight: '580px',
+              maxHeight: '560px',
               border: '1px solid var(--border-subtle)',
               overflow: 'hidden'
             }}>
@@ -155,22 +155,22 @@ export default function Hero({ onOpenBooking, heroImage }) {
               {/* Overlay Glass Badge */}
               <div style={{
                 position: 'absolute',
-                bottom: '1.5rem',
-                left: '1.5rem',
-                right: '1.5rem',
-                backgroundColor: 'rgba(25, 20, 20, 0.82)',
+                bottom: '1.25rem',
+                left: '1.25rem',
+                right: '1.25rem',
+                backgroundColor: 'rgba(25, 20, 20, 0.84)',
                 backdropFilter: 'blur(10px)',
                 color: '#F7F4EF',
-                padding: '1.25rem',
-                borderRadius: '16px',
+                padding: '1rem 1.15rem',
+                borderRadius: '14px',
                 border: '1px solid rgba(247, 244, 239, 0.15)'
-              }} className="animate-float">
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
-                  <Sparkles size={14} color="#C5A87C" />
+              }} className="animate-float hero-glass-badge">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.2rem' }}>
+                  <Sparkles size={13} color="#C5A87C" />
                   <span style={{
                     fontFamily: 'var(--font-sans)',
-                    fontSize: '0.6875rem',
-                    letterSpacing: '0.2em',
+                    fontSize: '0.65rem',
+                    letterSpacing: '0.18em',
                     textTransform: 'uppercase',
                     color: '#C5A87C',
                     fontWeight: 600
@@ -180,19 +180,19 @@ export default function Hero({ onOpenBooking, heroImage }) {
                 </div>
                 <div style={{
                   fontFamily: 'var(--font-serif)',
-                  fontSize: '1.25rem',
+                  fontSize: '1.15rem',
                   fontWeight: 500,
-                  lineHeight: 1.2
+                  lineHeight: 1.25
                 }}>
                   Signature Ocean Wave Art Boards
                 </div>
                 <div style={{
                   fontFamily: 'var(--font-sans)',
-                  fontSize: '0.75rem',
+                  fontSize: '0.725rem',
                   color: 'var(--text-muted-dark)',
-                  marginTop: '0.25rem'
+                  marginTop: '0.2rem'
                 }}>
-                  Hand-poured with non-yellowing epoxy resin, beach sand & sea foam lacing
+                  Hand-poured with non-yellowing epoxy resin & sea foam lacing
                 </div>
               </div>
             </div>
@@ -203,7 +203,16 @@ export default function Hero({ onOpenBooking, heroImage }) {
       <style>{`
         @media (max-width: 992px) {
           .hero-text-col { grid-column: span 12 !important; }
-          .hero-img-col { grid-column: span 12 !important; margin-top: 2rem; }
+          .hero-img-col { grid-column: span 12 !important; margin-top: 1.75rem; }
+          .hero-img-container { maxHeight: 380px !important; aspectRatio: 16/10 !important; }
+        }
+        @media (max-width: 576px) {
+          .hero-br { display: none !important; }
+          .hero-cta-group { flex-direction: column !important; width: 100% !important; }
+          .hero-btn-main, .hero-btn-sub { width: 100% !important; justify-content: center !important; }
+          .hero-review-badge { width: 100% !important; max-width: 100% !important; justify-content: center !important; }
+          .hide-mobile-accent { display: none !important; }
+          .hero-img-container { maxHeight: 320px !important; aspectRatio: 4/3 !important; }
         }
       `}</style>
     </section>

@@ -65,22 +65,23 @@ export default function FinalCTA({ onOpenBooking }) {
           <div className="gold-line" style={{ margin: '0 auto 2.5rem auto' }}></div>
 
           {/* Action Buttons */}
-          <div style={{
+          <div className="final-cta-btns" style={{
             display: 'flex',
             alignItems: 'center',
             justify: 'center',
             flexWrap: 'wrap',
-            gap: '1.25rem'
+            gap: '1rem'
           }}>
             <button
               onClick={onOpenBooking}
-              className="btn-primary"
+              className="btn-primary final-btn-main"
               style={{
                 backgroundColor: 'var(--accent-gold)',
                 borderColor: 'var(--accent-gold)',
                 color: '#121110',
                 fontWeight: 600,
-                padding: '1.1rem 2.5rem'
+                padding: '1.05rem 2.25rem',
+                minHeight: '50px'
               }}
             >
               <span>Book a Workshop</span>
@@ -91,8 +92,8 @@ export default function FinalCTA({ onOpenBooking }) {
               href={locationDetails.whatsappUrl}
               target="_blank"
               rel="noreferrer"
-              className="btn-whatsapp"
-              style={{ padding: '1.1rem 2.25rem' }}
+              className="btn-whatsapp final-btn-sub"
+              style={{ padding: '1.05rem 2.25rem', minHeight: '50px' }}
             >
               <MessageSquare size={18} />
               <span>WhatsApp Flow Studio</span>
@@ -100,6 +101,13 @@ export default function FinalCTA({ onOpenBooking }) {
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 576px) {
+          .final-cta-btns { flex-direction: column !important; width: 100% !important; }
+          .final-btn-main, .final-btn-sub { width: 100% !important; justify-content: center !important; }
+        }
+      `}</style>
     </section>
   );
 }
